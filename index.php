@@ -1,52 +1,14 @@
-<?php 
-    class player {
-        public $hp = 20;
-        // public $accuracy 0.5;
-        public $damage = 10;  
-
-        public function attack($enemy) {
-            $enemy->hp -= $this->damage;
-            $enemy->reciveDamage($this);
-        }
-
-        public function reciveDamage($enemy) {
-            echo "player recebeu $enemy->damage de dano";
-        }
-    }
-
-    class enemy {
-        public $hp = 20;
-        // public $accuracy 0.5;
-        public $damage = 5; 
-
-        public function attack($player) {
-            $player->hp -= $this->damage;
-            $player->reciveDamage($this);
-        }
-
-        public function reciveDamage($player) {
-            echo "enemy recebeu $player->damage de dano";
-        }
-    }
-
-    class run {
-
-    }
-
-    $p1 = new player();
-    $e1 = new enemy();
-
-    $p1->attack($e1);
-
-    echo "<br>";
-
-    echo $e1->hp;
-
-    echo "<br>";
-
-    $e1->attack($p1);
-
-    echo "<br>";
-
-    echo $p1->hp;
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="script.php" method="get">
+        <input type="submit" value="ataque" name="action">
+        <input type="submit" value="fugir" name="action">
+    </form>
+</body>
+</html>
