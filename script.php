@@ -33,14 +33,18 @@
 
     }
 
+    session_start();
+
     $p1 = new player();
     $e1 = new enemy();
 
     $action = $_GET["action"];
-
+    
     if ($action === "ataque") {
         $p1->attack($e1);
-        header("location: index.php?sas=$p1");
-
+        $_SESSION["info"] = $e1->hp;
+        header("location: index.php?");
     }
+
+    var_dump($_SESSION["info"]);
 ?>
