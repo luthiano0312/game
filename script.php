@@ -28,23 +28,20 @@
             echo "enemy recebeu $player->damage de dano";
         }
     }
-
-    class run {
-
-    }
-
-    session_start();
-
-    $p1 = new player();
-    $e1 = new enemy();
-
-    $action = $_GET["action"];
     
-    if ($action === "ataque") {
-        $p1->attack($e1);
-        $_SESSION["info"] = $e1->hp;
-        header("location: index.php?");
+    $history = [];
+    $action = $_GET['action'];
+
+    if (isset($_GET['history'])) {
+        $historyArray = unserialize($_GET['history']);
+        for ($i=0; $i < count($historyArray); $i++) { 
+            $history[] = $historyArray[$i];
+        }   
     }
 
-    var_dump($_SESSION["info"]);
+    $history[] = $action;
+
+    $historySerialized = serialize($history);
+
+    header("location: index.php?history=$historySerialized");
 ?>
